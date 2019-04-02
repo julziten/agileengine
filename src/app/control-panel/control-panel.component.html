@@ -1,0 +1,13 @@
+<div class="format-actions">
+  <button class="format-action" type="button" (click)="setFormat('b')"><b>B</b></button>
+  <button class="format-action" type="button" (click)="setFormat('i')"><i>I</i></button>
+  <button class="format-action" type="button" (click)="setFormat('u')"><u>U</u></button>
+  <button class="format-action" type="button" (click)="setFormat('s')">Show synonyms</button>
+  <input type="color" #myColor (click)="setFormat('color')">
+</div>
+<div class="syn" *ngIf="showSyn">
+  <h2>Synonyms of {{ selected }}</h2>
+  <div *ngFor="let syn of synonyms">
+    {{ syn.word }}
+  </div>
+</div>
