@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +9,7 @@ export class SynServiceService {
 
   selected: string;
 
-  endpoint = 'https://api.datamuse.com/words?ml=';
+  endpoint = 'https://api.datamuse.com/words?rel_syn=';
   
   getApiEndpoint(){
     console.log(this.selected);
