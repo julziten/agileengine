@@ -17,7 +17,7 @@ export class ControlPanelComponent {
 
   constructor(private service: SynServiceService){}
 
-  setFormat(type: string){
+  setFormat(value: string){
     let range: any;
     let selection = document.getSelection();
     this.service.selected = selection.toString();
@@ -28,6 +28,15 @@ export class ControlPanelComponent {
       selection.removeAllRanges();
       selection.addRange(range);
     }
+    this.checkTheValue(value);
+    document.designMode = "off";
+  }
+
+  getSyns(){
+    this.service.getApiEndpoint().subscribe((data) => this.synonyms = data);
+  }
+
+  checkTheValue(type: string){
     if (type == 'b') {
       document.execCommand('bold');
     } else if (type == 'u') {
@@ -40,11 +49,6 @@ export class ControlPanelComponent {
     } else if (type == 'color') {
       document.execCommand('foreColor', false, this.myColor.nativeElement.value); 
     }
-    document.designMode = "off";
-  }
-
-  getSyns(){
-    this.service.getApiEndpoint().subscribe((data) => this.synonyms = data);
   }
 
 
